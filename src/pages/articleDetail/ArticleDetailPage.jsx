@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
 import BreadCrumbs from "../../components/BreadCrumbs";
 import CommentsContainer from "../../components/comments/CommentsContainer";
 import MainLayout from "../../components/MainLayout";
@@ -50,11 +50,11 @@ const ArticleDetailPage = () => {
       ) : isError ? (
         <ErrorMessage message="Couldn't fetch the post detail" />
       ) : (
-        <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
+        <section className="container mx-auto flex max-w-5xl flex-col px-5 py-5 lg:flex-row lg:items-start lg:gap-x-5">
           <article className="flex-1">
             <BreadCrumbs data={breadCrumbsData} />
             <img
-              className="rounded-xl w-full"
+              className="w-full rounded-xl"
               src={
                 data?.photo
                   ? stables.UPLOAD_FOLDER_BASE_URL + data?.photo
@@ -66,13 +66,13 @@ const ArticleDetailPage = () => {
               {data?.categories.map((category) => (
                 <Link
                   to={`/blog?category=${category.name}`}
-                  className="text-primary text-sm font-roboto inline-block md:text-base"
+                  className="inline-block font-roboto text-sm text-primary md:text-base"
                 >
                   {category.name}
                 </Link>
               ))}
             </div>
-            <h1 className="text-xl font-medium font-roboto mt-4 text-dark-hard md:text-[26px]">
+            <h1 className="mt-4 font-roboto text-xl font-medium text-dark-hard md:text-[26px]">
               {data?.title}
             </h1>
             <div className="w-full">
@@ -95,7 +95,7 @@ const ArticleDetailPage = () => {
               className="mt-8 lg:mt-0 lg:max-w-xs"
             />
             <div className="mt-7">
-              <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+              <h2 className="mb-4 font-roboto font-medium text-dark-hard md:text-xl">
                 Share on:
               </h2>
               <SocialShareButtons
